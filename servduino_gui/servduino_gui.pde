@@ -7,6 +7,7 @@
   Serial puertoSerial;
   int posX = 300;
   int posY = 300;
+  int valor = 0;
   void setup(){
     //Ventana Emergente
     size(300, 300);
@@ -21,14 +22,18 @@
   }
   
   void draw(){ //color del bg y del boton.
-    background(0.0);
+    background(255,204,0);
     fill(#151FCB);
     rect(posX/2,posY/2,50,50);
   }
   //El servomotor se mueve si se da click al boton azul
   void mouseClicked(){
     println("Pressed");
-    if (mouseX > 123 & mouseX < 175 & mouseY >123 & mouseY < 175){
+    if (valor == 0)
+		valor = 155;
+	else 
+		valor = 0;
+	if (mouseX > 123 & mouseX < 175 & mouseY >123 & mouseY < 175){
       puertoSerial.write(65);
     }
   }
